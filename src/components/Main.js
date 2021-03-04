@@ -1,38 +1,45 @@
+function handleEditAvatarClick(){document.querySelector('.popup_type-edit-avatar').classList.add('popup_open')};
+
+function handleEditProfileClick(){document.querySelector('.popup_type-edit-profile').classList.add('popup_open')};
+
+function handleAddPlaceClick(){document.querySelector('.popup_type-add-card').classList.add('popup_open')};
+
+
 function Main(){
     return (
         <main className="main">
           <section className="profile">
             <div className="profile__avatar">
-                <a href="#" className="profile__edit-avatar-link">
+                <a href="#" className="profile__edit-avatar-link" onClick={handleEditAvatarClick}>
                   <img src="" className="profile__image" alt="Фото профиля"/>
                   <div className="profile__avatar-overlay"></div>
                 </a>
             </div>
             <div className="profile__info">
-                <div class="profile__name-block">
-                  <h1 class="profile__name"></h1>
-                  <button class="profile__edit-button" type="button"></button>
+                <div className="profile__name-block">
+                  <h1 className="profile__name"></h1>
+                  <button className="profile__edit-button" type="button" onClick={handleEditProfileClick}></button>
                 </div>
-                <p class="profile__job"></p>
+                <p className="profile__job"></p>
             </div>
-            <button class="profile__add-button" type="button"></button>
+            <button className="profile__add-button" type="button" onClick={handleAddPlaceClick}></button>
           </section>
 
-          <section class="cards">
-            <template class="template">
-                <div class="card">
-                  <div class="card__rectangle">
-                      <button class="card__delete-button" type="button"></button>
-                        <div class="card__image-block">
-                            <a href="#" class="card__open-fullsize-image">
-                              <img src="" class="card__image" alt=""/>
+          <section className="cards">
+            <template className="template">
+                <div className="card">
+                  <div className="card__rectangle">
+                      <button className="card__delete-button" type="button"></button>
+                        <div className="card__image-block">
+                            <a href="#" className="card__open-fullsize-image">
+                              <img src="" className="card__image" alt=""/>
                             </a>
                         </div>
-                      <div class="card__title-block">
-                        <h2 class="card__title"></h2>
-                        <div class="card__like-section">
-                            <button class="card__like-button" type="button"></button>
-                            <p class="card__like-number"></p>
+                      <div className="card__title-block">
+                        <h2 className="card__title"></h2>
+                        <div className="card__like-section">
+                            <button className="card__like-button" type="button"></button>
+                            <p className="card__like-number"></p>
                         </div>
                       </div>
                   </div>
@@ -43,3 +50,5 @@ function Main(){
         </main>
     )
 };
+
+export default Main;

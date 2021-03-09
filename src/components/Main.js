@@ -18,25 +18,23 @@ function Main(){
     const [cards, setCards] = useState([]);
 
     useEffect(()=>{
-      //handleUserRequest();
+      handleUserRequest();
       handleCardsRequest();
     }, []);
     
-    /*function handleUserRequest() {
+    function handleUserRequest(){
       api.getUser()
       .then(data => {
-          console.log(data);
-              const userData = {
-                id: item._id,
-                name: item.name,
-                about: item.about,
-                avatar: item.avatar  
-              }
-          })
-          setUser(userData);
+              const userData = new Object();
+              userData.id = data._id;
+              userData.name = data.name;
+              userData.about = data.about;
+              userData.avatar = data.avatar;
+              setUser(userData)
         }
-      }).catch(err => console.log(err))
-    }*/
+      ).catch(err => console.log(err));
+    };
+  
 
     function handleCardsRequest(){
       api.getCards()
@@ -60,16 +58,16 @@ function Main(){
             <section className="profile">
                 <div className="profile__avatar">
                     <a href="#" className="profile__edit-avatar-link" onClick={handleEditAvatarClick}>
-                      <img src="#" className="profile__image" alt="Фото профиля"/>
+                      <img src={user.avatar} className="profile__image" alt="Фото профиля"/>
                       <div className="profile__avatar-overlay"></div>
                     </a>
                 </div>
                 <div className="profile__info">
                     <div className="profile__name-block">
-                      <h1 className="profile__name"></h1>
+                      <h1 className="profile__name">{user.name}</h1>
                       <button className="profile__edit-button" type="button" onClick={handleEditProfileClick}></button>
                     </div>
-                    <p className="profile__job"></p>
+                    <p className="profile__job">{user.about}</p>
                 </div>
                 <button className="profile__add-button" type="button" onClick={handleAddPlaceClick}></button>
             </section>
@@ -79,6 +77,8 @@ function Main(){
               cards.map(item=>
                 <Card
                   link={item.link}
+                  name={item.name}
+                  likes={item.likes}
                 />)
           }
           </section>

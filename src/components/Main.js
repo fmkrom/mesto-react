@@ -39,7 +39,6 @@ function Main(){
     function handleCardsRequest(){
       api.getCards()
         .then(data =>{
-           //console.log(data);
            const cardsData = data.map(item=>{
               return{
                 id: item._id,
@@ -87,16 +86,3 @@ function Main(){
 };
 
 export default Main;
-
-/*
-{
-              cards.map(item=>
-                console.log(
-                <Card
-                  key={item.id}
-                  link={item.link}
-                />)
-                )
-              
-              }
-*/

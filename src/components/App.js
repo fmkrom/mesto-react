@@ -12,6 +12,12 @@ function App() {
   const [isPopupAddPlaceOpen, handleAddPlaceClick] = useState(false);
   const [isPopupEditAvatarOpen, handleEditAvatarClick] = useState(false);
   
+  function closeAllPopups(){
+    handleEditProfileClick(false);
+    handleAddPlaceClick(false);
+    handleEditAvatarClick(false);
+  }
+  
   return (
       <div className="body">
         <div className="page">
@@ -28,7 +34,8 @@ function App() {
             name="add-card" 
             popupTitle="Новое место" 
             buttonText="Добавить"
-            isOpen={isPopupAddPlaceOpen} 
+            isOpen={isPopupAddPlaceOpen}
+            isClosed={closeAllPopups}
             >
             <input required id="input_addplace-name" className="form__field" name="addPlaceName" placeholder="Название" value=""  type="text" minlength="2" maxlenght="30"/>
             <span className="form-error form-error_hidden" id="input_addplace-name-error"></span>
@@ -41,6 +48,7 @@ function App() {
             popupTitle="Редактировать профиль" 
             buttonText="Сохранить"
             isOpen={isPopupEditProfileOpen}
+            isClosed={closeAllPopups}
             >
             <input required className="form__field" id="input_editprofile-name" name="editProfileName" placeholder="Имя" value=""  type="text" minlength="2" maxlenght="40"/>
             <span className="form-error form-error_hidden" id="input_editprofile-name-error"></span>
@@ -61,6 +69,7 @@ function App() {
           popupTitle="Редактировать аватар" 
           buttonText="Сохранить аватар"
           isOpen={isPopupEditAvatarOpen}
+          isClosed={closeAllPopups}
           >
             <input required id="input_edit-avatar" className="form__field" name="avatarUrl" placeholder="Ссылка на новый аватар" value=""  type="url"/>
             <span className="form-error form-error_hidden" id="input_edit-avatar-error"></span>

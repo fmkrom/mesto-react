@@ -4,16 +4,8 @@ import api from "./Api.js";
 
 import Card from "./Card.js";
 
-function handleEditAvatarClick(){document.querySelector('.popup_type-edit-avatar').classList.add('popup_open')};
+function Main(props){
 
-function handleEditProfileClick(){document.querySelector('.popup_type-edit-profile').classList.add('popup_open')};
-
-function handleAddPlaceClick(){document.querySelector('.popup_type-add-card').classList.add('popup_open')};
-
-function Main(){
-
-    const [apiRequest, setApiRequest] = useState([]);
-    
     const [user, setUser] = useState([]);
     const [cards, setCards] = useState([]);
 
@@ -52,11 +44,11 @@ function Main(){
         }).catch(err => console.log(err));
     }
 
-      return(
+    return(
       <main className="main">
             <section className="profile">
                 <div className="profile__avatar">
-                    <a href="#" className="profile__edit-avatar-link" onClick={handleEditAvatarClick}>
+                    <a href="#" className="profile__edit-avatar-link" onClick={props.onEditAvatar}>
                       <img src={user.avatar} className="profile__image" alt="Фото профиля"/>
                       <div className="profile__avatar-overlay"></div>
                     </a>
@@ -64,11 +56,11 @@ function Main(){
                 <div className="profile__info">
                     <div className="profile__name-block">
                       <h1 className="profile__name">{user.name}</h1>
-                      <button className="profile__edit-button" type="button" onClick={handleEditProfileClick}></button>
+                      <button className="profile__edit-button" type="button" onClick={props.onEditProfile}></button>
                     </div>
                     <p className="profile__job">{user.about}</p>
                 </div>
-                <button className="profile__add-button" type="button" onClick={handleAddPlaceClick}></button>
+                <button className="profile__add-button" type="button" onClick={props.onAddPlace}></button>
             </section>
  
           <section className="cards">

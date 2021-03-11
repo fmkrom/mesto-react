@@ -1,7 +1,7 @@
 function PopupWithForm(props){
 
 return (
-    <section className={`popup popup_type-${props.name}`}>
+    <section className={`popup popup_type-${props.name} ${props.isOpen ? "popup_open" : ""}`}>
         <div className="popup__overlay popup__overlay_light">
             <div className="popup__content-block">
                 <button className="popup__button-close" type="button"></button>

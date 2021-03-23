@@ -1,12 +1,17 @@
 function Card (props){
+    
+    function handleCardClick(){
+        props.onCardClick(props.card);
+    }
+
     return(
         <div className="template">
             <div className="card">
                 <div className="card__rectangle">
                     <button className="card__delete-button" type="button"></button>
                     <div className="card__image-block">
-                    <a href={props.link} className="card__open-fullsize-image">
-                        <img src={props.link} className="card__image" alt="Card Name" />
+                    <a href='#' className="card__open-fullsize-image" onClick={handleCardClick}>
+                        <img src={props.card} className="card__image" alt="Card Name" />
                     </a>
                     </div>
                         <div className="card__title-block">

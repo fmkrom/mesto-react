@@ -4,6 +4,7 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 import { useState } from 'react';
 
@@ -12,10 +13,20 @@ function App() {
   const [isPopupAddPlaceOpen, handleAddPlaceClick] = useState(false);
   const [isPopupEditAvatarOpen, handleEditAvatarClick] = useState(false);
   
+  const [isPopupWithImageOpen, handleCardImageClick]  = useState(false);
+  const [selectedCard, setSelectedCard] = useState();
+
+  function hanldeCardClick(cardUrl){
+    setSelectedCard(cardUrl);
+    handleCardImageClick(true);
+    console.log('Card clicked from App!');
+  }
+
   function closeAllPopups(){
     handleEditProfileClick(false);
     handleAddPlaceClick(false);
     handleEditAvatarClick(false);
+    handleCardImageClick(false);
   }
   
   return (
@@ -27,8 +38,16 @@ function App() {
             onAddPlace = {handleAddPlaceClick}
             onEditAvatar = {handleEditAvatarClick}
             onEditProfile = {handleEditProfileClick}
+            onOpenFullSizeImage = {hanldeCardClick}
           />
+
           <Footer />
+
+          <PopupWithImage
+            card={selectedCard}
+            isOpen={isPopupWithImageOpen}
+            isClosed={closeAllPopups}
+          />
 
           <PopupWithForm 
             name="add-card" 
@@ -82,4 +101,20 @@ function App() {
 
 export default App;
 
+/*
+Нет, все равно непонятно. Объясните, пожалуйста, на пальцах.
+Начать с того, что как-то уж слишком заковыристо составлена инструкция в брифе! :(
 
+По пункту 1:
+
+Ок, допустим 
+
+По поводу данных, которые я имею ввиду в пункте 3. Вот есть функция:
+
+function hanldeCardClick(card){
+  setSelectedCard(card);
+}
+
+Она задает вызывает setSelectedCard из хука, а этому setSelectedCard как раз и передается АРГУМЕНТ  
+
+*/

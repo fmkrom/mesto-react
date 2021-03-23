@@ -64,12 +64,14 @@ function Main(props){
             </section>
  
           <section className="cards">
+          
           {
               cards.map(item=>
                 <Card
-                  link={item.link}
+                  card={item.link}
                   name={item.name}
                   likes={item.likes}
+                  onCardClick={props.onOpenFullSizeImage}
                 />)
           }
           </section>

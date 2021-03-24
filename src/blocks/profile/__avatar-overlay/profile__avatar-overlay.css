@@ -13,6 +13,8 @@
     height: 120px;
     margin-top: -125px;
     
+    margin-left: -8px;
+
     z-index:-1;
 }
 

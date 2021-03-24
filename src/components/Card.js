@@ -10,9 +10,9 @@ function Card (props){
                 <div className="card__rectangle">
                     <button className="card__delete-button" type="button"></button>
                     <div className="card__image-block">
-                    <a href='#' className="card__open-fullsize-image" onClick={handleCardClick}>
+                    <button className="card__open-fullsize-image" onClick={handleCardClick}>
                         <img src={props.card} className="card__image" alt="Card Name" />
-                    </a>
+                    </button>
                     </div>
                         <div className="card__title-block">
                         <h2 className="card__title">{props.name}</h2>

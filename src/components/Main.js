@@ -17,7 +17,7 @@ function Main(props){
     function handleUserRequest(){
       api.getUser()
       .then(data => {
-              const userData = new Object();
+              const userData = {};
               userData.id = data._id;
               userData.name = data.name;
               userData.about = data.about;
@@ -48,10 +48,10 @@ function Main(props){
       <main className="main">
             <section className="profile">
                 <div className="profile__avatar">
-                    <a href="#" className="profile__edit-avatar-link" onClick={props.onEditAvatar}>
+                    <button className="profile__edit-avatar-link" onClick={props.onEditAvatar}>
                       <img src={user.avatar} className="profile__image" alt="Фото профиля"/>
                       <div className="profile__avatar-overlay"></div>
-                    </a>
+                    </button>
                 </div>
                 <div className="profile__info">
                     <div className="profile__name-block">
@@ -68,6 +68,7 @@ function Main(props){
           {
               cards.map(item=>
                 <Card
+                  key={item._id}
                   card={item.link}
                   name={item.name}
                   likes={item.likes}

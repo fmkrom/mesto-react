@@ -14,10 +14,11 @@ function App() {
   const [isPopupEditAvatarOpen, handleEditAvatarClick] = useState(false);
   
   const [isPopupWithImageOpen, handleCardImageClick]  = useState(false);
-  const [selectedCard, setSelectedCard] = useState();
+  const [selectedCard, setSelectedCard] = useState({url:"", name:""});
 
-  function hanldeCardClick(cardUrl){
-    setSelectedCard(cardUrl);
+  function hanldeCardClick(cardUrl, cardName){
+    console.log(cardName);
+    setSelectedCard({url: cardUrl, name: cardName});
     handleCardImageClick(true);
   }
 
@@ -43,7 +44,8 @@ function App() {
           <Footer />
 
           <ImagePopup
-            card={selectedCard}
+            card={selectedCard.url}
+            name={selectedCard.name}
             isOpen={isPopupWithImageOpen}
             isClosed={closeAllPopups}
           />

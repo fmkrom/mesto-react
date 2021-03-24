@@ -4,7 +4,7 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 
 import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
+import ImagePopup from "./ImagePopup.js";
 
 import { useState } from 'react';
 
@@ -42,7 +42,7 @@ function App() {
 
           <Footer />
 
-          <PopupWithImage
+          <ImagePopup
             card={selectedCard}
             isOpen={isPopupWithImageOpen}
             isClosed={closeAllPopups}

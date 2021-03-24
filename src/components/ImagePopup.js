@@ -1,4 +1,4 @@
-function PopupWithImage(props){
+function ImagePopup(props){
 
 return (
     <section className={`popup popup_type-fullsize-image ${props.isOpen ? "popup_open" : ""}`}>
@@ -15,4 +15,4 @@ return (
     )
 };
 
-export default PopupWithImage;
+export default ImagePopup;

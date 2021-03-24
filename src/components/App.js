@@ -44,7 +44,7 @@ function App() {
           <Footer />
 
           <ImagePopup
-            card={selectedCard.url}
+            url={selectedCard.url}
             name={selectedCard.name}
             isOpen={isPopupWithImageOpen}
             isClosed={closeAllPopups}

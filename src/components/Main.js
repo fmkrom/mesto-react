@@ -9,29 +9,47 @@ function Main(props){
     const [user, setUser] = useState({});
     const [cards, setCards] = useState([]);
 
+    function handleUserRequest(data){
+      const userData = {};
+      userData.id = data._id;
+      userData.name = data.name;
+      userData.about = data.about;
+      userData.avatar = data.avatar;
+      setUser(userData)
+    }
+
+    function handleCardsRequest(data){
+        const cardsData = data.map(item=>{
+              return{
+                id: item._id,
+                name: item.name,
+                link: item.link,
+                owner: item.owner,
+                likes: item.likes
+              }
+          })
+      setCards(cardsData);
+    }
+
     useEffect(()=>{
-      handleUserRequest();
-      handleCardsRequest();
+      Promise.all([api.getUser(), api.getCards()])
+      .then(([userData, cardsData]) =>{
+        handleUserRequest(userData)
+        handleCardsRequest(cardsData)
+      }).catch(err => console.log(err));
     }, []);
     
-    function handleUserRequest(){
-      api.getUser()
-      .then(data => {
-              const userData = {};
-              userData.id = data._id;
-              userData.name = data.name;
-              userData.about = data.about;
-              userData.avatar = data.avatar;
-              setUser(userData)
-        }
-      ).catch(err => console.log(err));
+    function handleUserRequest(data){
+          const userData = {};
+          userData.id = data._id;
+          userData.name = data.name;
+          userData.about = data.about;
+          userData.avatar = data.avatar;
+          setUser(userData)
     }
   
-
-    function handleCardsRequest(){
-      api.getCards()
-        .then(data =>{
-           const cardsData = data.map(item=>{
+    function handleCardsRequest(data){
+        const cardsData = data.map(item=>{
               return{
                 id: item._id,
                 name: item.name,
@@ -40,8 +58,7 @@ function Main(props){
                 likes: item.likes
               }
            })
-           setCards(cardsData);
-        }).catch(err => console.log(err));
+      setCards(cardsData);
     }
 
     return(

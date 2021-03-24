@@ -7,7 +7,7 @@ return (
                   <button className="popup__button-close" type="button" onClick={props.isClosed}></button>
                         <div className="fullsize-image">
                             <img src={props.card} className="fullsize-image__image" alt="Card Name"/>
-                            <h4 className="fullsize-image__title"></h4>
+                            <div className="fullsize-image__title"></div>
                         </div>
                 </div>
             </div>

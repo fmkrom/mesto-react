@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react';
 
-import api from "./Api.js";
+import api from "../utils/Api.js";
 
 import Card from "./Card.js";
 
 function Main(props){
 
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [cards, setCards] = useState([]);
 
     useEffect(()=>{
@@ -25,7 +25,7 @@ function Main(props){
               setUser(userData)
         }
       ).catch(err => console.log(err));
-    };
+    }
   
 
     function handleCardsRequest(){
@@ -68,7 +68,7 @@ function Main(props){
           {
               cards.map(item=>
                 <Card
-                  key={item._id}
+                  key={item.id}
                   card={item.link}
                   name={item.name}
                   likes={item.likes}

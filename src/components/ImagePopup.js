@@ -1,5 +1,7 @@
 function ImagePopup(props){
 
+console.log(props);
+
 return (
     <section className={`popup popup_type-fullsize-image ${props.isOpen ? "popup_open" : ""}`}>
             <div className="popup__overlay popup__overlay_dark">

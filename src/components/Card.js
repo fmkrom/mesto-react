@@ -1,5 +1,5 @@
 function Card (props){
-    
+
     function handleCardClick(){
         props.onCardClick(props.card);
     }
@@ -11,7 +11,7 @@ function Card (props){
                     <button className="card__delete-button" type="button"></button>
                     <div className="card__image-block">
                     <button className="card__open-fullsize-image" onClick={handleCardClick}>
-                        <img src={props.card} className="card__image" alt="Card Name" />
+                        <img src={props.card} className="card__image" alt={props.name} />
                     </button>
                     </div>
                         <div className="card__title-block">

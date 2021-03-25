@@ -17,7 +17,6 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({url:"", name:""});
 
   function hanldeCardClick(cardUrl, cardName){
-    console.log(cardName);
     setSelectedCard({url: cardUrl, name: cardName});
     handleCardImageClick(true);
   }

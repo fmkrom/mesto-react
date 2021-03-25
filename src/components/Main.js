@@ -39,28 +39,6 @@ function Main(props){
       }).catch(err => console.log(err));
     }, []);
     
-    function handleUserRequest(data){
-          const userData = {};
-          userData.id = data._id;
-          userData.name = data.name;
-          userData.about = data.about;
-          userData.avatar = data.avatar;
-          setUser(userData)
-    }
-  
-    function handleCardsRequest(data){
-        const cardsData = data.map(item=>{
-              return{
-                id: item._id,
-                name: item.name,
-                link: item.link,
-                owner: item.owner,
-                likes: item.likes
-              }
-           })
-      setCards(cardsData);
-    }
-
     return(
       <main className="main">
             <section className="profile">

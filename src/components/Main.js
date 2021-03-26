@@ -7,8 +7,8 @@ import Card from "./Card.js";
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 function Main(props){
-
     const currentUserData = useContext(CurrentUserContext);
+    
     const [cards, setCards] = useState([]);
 
     function handleCardsRequest(data){
@@ -55,8 +55,9 @@ function Main(props){
           {
               cards.map(item=>
                 <Card
+                  owner={item.owner}
                   key={item.id}
-                  card={item.link}
+                  url={item.link}
                   name={item.name}
                   likes={item.likes}
                   onCardClick={props.onOpenFullSizeImage}

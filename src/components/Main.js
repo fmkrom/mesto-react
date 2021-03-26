@@ -30,7 +30,12 @@ function Main(props){
         handleCardsRequest(cardsData)
       }).catch(err => console.log(err));
     }, []);
-    
+
+    function handleDeleteCard(card){
+        console.log(card.id);
+        //api.deleteCard(card.id).then(()=> console.log('This card deleted: ', card.name, card.id ))
+    }
+
     return(
       <main className="main">
             <section className="profile">
@@ -53,14 +58,15 @@ function Main(props){
           <section className="cards">
           
           {
-              cards.map(item=>
+              cards.map(card=>
                 <Card
-                  owner={item.owner}
-                  key={item.id}
-                  url={item.link}
-                  name={item.name}
-                  likes={item.likes}
+                  owner={card.owner}
+                  key={card.id}
+                  url={card.link}
+                  name={card.name}
+                  likes={card.likes}
                   onCardClick={props.onOpenFullSizeImage}
+                  onDeleteCard={handleDeleteCard(card)}
                 />)
           }
           </section>

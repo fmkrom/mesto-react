@@ -57,7 +57,7 @@ class Api {
     }
 
     //Применение лайк-статуса к методу лайка карточки:
-    likeCard(cardId, likeStatus){
+    changeLikeCardStatus(cardId, likeStatus){
       return fetch(`${this._url}/${this._cohort}/cards/likes/${cardId}`,
         {
           method: this.setCardLikeStatus(likeStatus),

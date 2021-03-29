@@ -7,7 +7,7 @@ return (
                 <button className="popup__button-close" type="button" onClick={props.isClosed}></button>
                 <div className="popup__form-container">
                     <h3 className="popup__title">{props.popupTitle}</h3>
-                        <form className="form" name={props.name} noValidate>
+                        <form className="form" name={props.name} onSubmit={props.onSubmit} noValidate>
                             {props.children}
                             <button className="form__button-save" type="submit">{props.buttonText}</button>
                         </form>

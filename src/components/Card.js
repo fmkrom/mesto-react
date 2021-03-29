@@ -24,7 +24,7 @@ function Card (props){
                         <div className="card__title-block">
                         <h2 className="card__title">{props.name}</h2>
                         <div className="card__like-section">
-                            <button onClick={props.onDeleteCard} className={`card__like-button ${isLiked ? "card__like-button_active" : "card__like-button_inactive"}`} type="button"></button>
+                            <button onClick={props.handleLikeClick} className={`card__like-button ${isLiked ? "card__like-button_active" : "card__like-button_inactive"}`} type="button"></button>
                             <p className="card__like-number">{props.likes.length}</p>
                         </div>
                         </div>

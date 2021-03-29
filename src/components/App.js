@@ -5,6 +5,7 @@ import Footer from "./Footer.js";
 
 import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
+import EditProfilePopup from "./EditProfilePopup.js"
 
 import { useState, useEffect } from 'react';
 
@@ -41,6 +42,14 @@ function App() {
     handleCardImageClick(false);
   }
 
+  function handleUpdateUser(data){
+      api.setUser(data)
+      .then((newUserData)=>{
+        setCurrentUser(newUserData)
+      }).catch(err => console.log(err))
+      closeAllPopups();
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
         <div className="body">
@@ -76,18 +85,11 @@ function App() {
               <span className="form-error form-error_hidden" id="input_addplace-url-error"></span>
             </PopupWithForm>
             
-            <PopupWithForm 
-              name="edit-profile" 
-              popupTitle="Редактировать профиль" 
-              buttonText="Сохранить"
-              isOpen={isPopupEditProfileOpen}
-              isClosed={closeAllPopups}
-              >
-              <input required className="form__field" id="input_editprofile-name" name="editProfileName" placeholder="Имя" defaultValue=""  type="text" minLength="2" maxlenght="40"/>
-              <span className="form-error form-error_hidden" id="input_editprofile-name-error"></span>
-              <input required className="form__field" id="input_editprofile-job" name="editProfileJob" placeholder="Род занятий" defaultValue="" type="text" minLength="2" maxlenght="200"/>
-              <span className="form-error form-error_hidden" id="input_editprofile-job-error"></span>
-            </PopupWithForm>
+            <EditProfilePopup 
+              isOpen={isPopupEditProfileOpen} 
+              onClose={closeAllPopups}
+              onUpdateUser={handleUpdateUser}  
+            />
 
             <PopupWithForm 
               name="delete-card" 

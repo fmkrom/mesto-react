@@ -106,8 +106,8 @@ class Api {
             'Content-Type': 'application/json'
           }, 
           body: JSON.stringify({
-            name: data.editProfileName,
-            about: data.editProfileJob
+            name: data.name,
+            about: data.about
           })
       }).then(this.getRes)
     };

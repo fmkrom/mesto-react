@@ -31,11 +31,16 @@ function Main(props){
       }).catch(err => console.log(err));
     }, []);
 
-    function handleDeleteCard(card){
-        console.log(card.id);
-        //api.deleteCard(card.id).then(()=> console.log('This card deleted: ', card.name, card.id ))
-    }
-
+    
+    /*function handleLikeCard(card){
+       const isLiked = card.likes.some((item)=> item._id === currentUserData.id);
+       
+       api.changeLikeCardStatus(card.id, !isLiked)
+       .then((newCardData)=>{
+           setCards(((cards)=> cards.map((c) => c._id === card.id ? newCardData : c)))
+       })
+    }*/
+    
     return(
       <main className="main">
             <section className="profile">
@@ -56,9 +61,9 @@ function Main(props){
             </section>
  
           <section className="cards">
-          
           {
-              cards.map(card=>
+            cards.map((card)=> {
+              return(
                 <Card
                   owner={card.owner}
                   key={card.id}
@@ -66,9 +71,11 @@ function Main(props){
                   name={card.name}
                   likes={card.likes}
                   onCardClick={props.onOpenFullSizeImage}
-                  onDeleteCard={handleDeleteCard(card)}
-                />)
-          }
+                  //handleLikeClick ={console.log(card.name)}
+                />
+              )
+            })
+          } 
           </section>
         </main>
     )

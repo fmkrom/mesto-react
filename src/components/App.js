@@ -5,7 +5,8 @@ import Footer from "./Footer.js";
 
 import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
-import EditProfilePopup from "./EditProfilePopup.js"
+import EditProfilePopup from "./EditProfilePopup.js";
+import EditAvatarPopup from "./EditAvatarPopup.js";
 
 import { useState, useEffect } from 'react';
 
@@ -49,6 +50,17 @@ function App() {
       }).catch(err => console.log(err))
       closeAllPopups();
   };
+
+  function handleUpdateAvatar(data){
+    console.log(data);
+
+    api.editAvatar(data.avatar)
+    .then((newAvatarData)=>{
+        setCurrentUser(newAvatarData)
+        console.log(newAvatarData);
+    }).catch(err => console.log(err))
+    closeAllPopups();
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -98,16 +110,11 @@ function App() {
               <div className="form form_confirm-deleting-card"  name="confirmDeletingCard"></div>
             </PopupWithForm>
 
-            <PopupWithForm 
-            name="edit-avatar" 
-            popupTitle="Редактировать аватар" 
-            buttonText="Сохранить аватар"
-            isOpen={isPopupEditAvatarOpen}
-            isClosed={closeAllPopups}
-            >
-              <input required id="input_edit-avatar" className="form__field" name="avatarUrl" placeholder="Ссылка на новый аватар" defaultValue=""  type="url"/>
-              <span className="form-error form-error_hidden" id="input_edit-avatar-error"></span>
-            </PopupWithForm>
+            <EditAvatarPopup 
+              isOpen={isPopupEditAvatarOpen}
+              isClosed={closeAllPopups}
+              editAvatar={handleUpdateAvatar}
+            />
 
           </div>
       </div>

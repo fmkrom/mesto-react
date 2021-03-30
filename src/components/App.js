@@ -45,14 +45,21 @@ function App() {
 
   function handleLikeCard(card){
     const isLiked = card.likes.some((item)=> item._id === currentUser.id);
+    
     api.changeLikeCardStatus(card.id, !isLiked)
     .then((newCardData)=>{
       setCurrentCards(((cards)=> cards.map((c) => c._id === card.id ? newCardData : c)))
     })
   }
 
-  function handleDeleteCard(){
-    console.log('card deleted!')
+  function handleDeleteCard(data){
+    console.log('card deleted!', data.name);
+
+    api.deleteCard(data.id)
+    .then(()=>{
+      const cardsAfterDelete = currentCards.filter(card => card.id === !data.id);
+      setCurrentCards(cardsAfterDelete);
+    }).catch(err => console.log(err));
   }
 
   function closeAllPopups(){
@@ -99,7 +106,7 @@ function App() {
                   onEditProfile = {handleEditProfileClick}
                   onOpenFullSizeImage = {hanldeCardClick}
                   onLikeClick={handleLikeCard}
-                  onCardDelete={handleDeleteCard}
+                  onDeleteButtonClick={handleDeleteCard}
                 />
 
                 <Footer />

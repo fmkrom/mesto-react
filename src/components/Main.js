@@ -43,7 +43,7 @@ function Main(props){
                   likes={card.likes}
                   onCardClick={props.onOpenFullSizeImage}
                   onLikeClick={props.onLikeClick}
-                  handleDeleteClick={props.onCardDelete}
+                  onDeleteClick={props.onDeleteButtonClick}
                 />
               )
             })

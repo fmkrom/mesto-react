@@ -15,11 +15,15 @@ function Card (props){
         props.onLikeClick(props);
     }
 
+    function handleDeleteClick(){
+        props.onDeleteClick(props)
+    }
+
     return(
         <div className="template">
             <div className="card">
                 <div className="card__rectangle">
-                    <button className={`card__delete-button ${isOwn ? "card__delete-button_shown" : "card__delete-button_hidden"}`} type="button"></button>
+                    <button onClick={handleDeleteClick} className={`card__delete-button ${isOwn ? "card__delete-button_shown" : "card__delete-button_hidden"}`} type="button"></button>
                     <div className="card__image-block">
                     <button className="card__open-fullsize-image" onClick={handleCardClick}>
                         <img src={props.url} className="card__image" alt={props.name} />

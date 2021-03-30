@@ -53,11 +53,9 @@ function App() {
   }
 
   function handleDeleteCard(data){
-    console.log('card deleted!', data.name);
-
     api.deleteCard(data.id)
     .then(()=>{
-      const cardsAfterDelete = currentCards.filter(card => card.id === !data.id);
+      const cardsAfterDelete = currentCards.filter(card => !(card._id === data.id));
       setCurrentCards(cardsAfterDelete);
     }).catch(err => console.log(err));
   }

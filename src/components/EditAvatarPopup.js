@@ -17,7 +17,6 @@ function EditAvatarPopup(props){
 
     useEffect(()=>{
         setAvatar(currentUserData.avatar);
-        //avatarRef.current.value = avatar;
     }, [currentUserData])
 
     function handleSubmit(e){
@@ -34,7 +33,7 @@ function EditAvatarPopup(props){
             isClosed={props.isClosed}
             onSubmit={handleSubmit}
         >
-            <input value={avatar} ref={avatarRef} onChange={handleEditAvatar} required id="input_edit-avatar" className="form__field" name="avatarUrl" placeholder="Ссылка на новый аватар" defaultValue=""  type="url"/>
+            <input value={avatar} ref={avatarRef} onChange={handleEditAvatar} required id="input_edit-avatar" className="form__field" name="avatarUrl" placeholder="Ссылка на новый аватар" type="url"/>
             <span className="form-error form-error_hidden" id="input_edit-avatar-error"></span>
         </PopupWithForm>
     )

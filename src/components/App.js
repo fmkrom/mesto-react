@@ -43,14 +43,12 @@ function App() {
     handleCardImageClick(true);
   }
 
-  function handleLikeCard(){
-    console.log('Card Liked');   
-
-    /*const isLiked = card.likes.some((item)=> item._id === currentUser.id);
+  function handleLikeCard(card){
+    const isLiked = card.likes.some((item)=> item._id === currentUser.id);
     api.changeLikeCardStatus(card.id, !isLiked)
     .then((newCardData)=>{
       setCurrentCards(((cards)=> cards.map((c) => c._id === card.id ? newCardData : c)))
-    })*/
+    })
   }
 
   function handleDeleteCard(){
@@ -95,13 +93,13 @@ function App() {
                 <Header />
                 
                 <Main 
-                  cards={currentCards.reverse()}
+                  cards={currentCards}
                   onAddPlace = {handleAddPlaceClick}
                   onEditAvatar = {handleEditAvatarClick}
                   onEditProfile = {handleEditProfileClick}
                   onOpenFullSizeImage = {hanldeCardClick}
-                  onCardLike={handleLikeCard}
-                  onCardlike={handleDeleteCard}
+                  onLikeClick={handleLikeCard}
+                  onCardDelete={handleDeleteCard}
                 />
 
                 <Footer />

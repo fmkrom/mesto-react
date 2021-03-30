@@ -32,15 +32,17 @@ function Main(props){
           <section className="cards">
           {
             props.cards.map((card)=>{
+              //console.log(card);
               return(
                 <Card
                   owner={card.owner}
                   key={card._id}
+                  id={card._id}
                   url={card.link}
                   name={card.name}
                   likes={card.likes}
                   onCardClick={props.onOpenFullSizeImage}
-                  handleLikeClick={props.onCardLike}
+                  onLikeClick={props.onLikeClick}
                   handleDeleteClick={props.onCardDelete}
                 />
               )

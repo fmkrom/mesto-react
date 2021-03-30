@@ -7,14 +7,13 @@ import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
 import EditProfilePopup from "./EditProfilePopup.js";
 import EditAvatarPopup from "./EditAvatarPopup.js";
-import AddCardPopup from "./AddCardPopup.js"
+import AddPlacePopup from "./AddPlacePopup.js";
 
 import { useState, useEffect } from 'react';
 
-import api from "../utils/Api.js";
+import api from "../utils/api.js";
 
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
-//import CurrentCardsContext from "../contexts/CurrentCardsContext.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -116,7 +115,7 @@ function App() {
                   isClosed={closeAllPopups}
                 />
 
-                <AddCardPopup
+                <AddPlacePopup
                   isOpen={isPopupAddPlaceOpen}
                   isClosed={closeAllPopups}
                   onAddPlace={handleAddPlaceSubmit}
@@ -127,13 +126,6 @@ function App() {
                   onClose={closeAllPopups}
                   onUpdateUser={handleUpdateUser}  
                 />
-
-                <PopupWithForm 
-                  name="delete-card" 
-                  popupTitle="Вы уверены?" 
-                  buttonText="Да">
-                  <div className="form form_confirm-deleting-card"  name="confirmDeletingCard"></div>
-                </PopupWithForm>
 
                 <EditAvatarPopup 
                   isOpen={isPopupEditAvatarOpen}
@@ -150,7 +142,12 @@ function App() {
 export default App;
 
 /*
-https://images.unsplash.com/photo-1617080567959-d8a76e10b6f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80
-https://images.unsplash.com/photo-1617075261285-045119530bd1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80
-https://images.unsplash.com/photo-1617039412398-10d07d621071?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80
+Код попапа удаления карточки для дальнейшей работы:
+
+<PopupWithForm 
+                  name="delete-card" 
+                  popupTitle="Вы уверены?" 
+                  buttonText="Да">
+                  <div className="form form_confirm-deleting-card"  name="confirmDeletingCard"></div>
+</PopupWithForm>
 */

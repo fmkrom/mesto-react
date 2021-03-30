@@ -7,8 +7,6 @@ function Card (props){
     const isOwn = props.owner._id === currentUserData._id;
     const isLiked = props.likes.some((item) => item._id === currentUserData._id);
 
-    //console.log('Card name: ', props.name, 'Like status of this Card: ', isLiked);
-
     function handleCardClick(){
         props.onCardClick(props.url, props.name);
     }

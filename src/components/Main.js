@@ -1,11 +1,7 @@
 import {useContext} from 'react';
 
-//import api from "../utils/Api.js";
-
 import Card from "./Card.js";
-
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
-//import CurrentCardsContext from "../contexts/CurrentCardsContext.js";
 
 function Main(props){
     const currentUserData = useContext(CurrentUserContext);
@@ -32,7 +28,6 @@ function Main(props){
           <section className="cards">
           {
             props.cards.map((card)=>{
-              //console.log(card);
               return(
                 <Card
                   owner={card.owner}

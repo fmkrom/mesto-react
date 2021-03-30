@@ -47,28 +47,28 @@ class Api {
       ).then(this.getRes);
     };
 
-    //Промежуточный метод: установить лайк-статус
-    setCardLikeStatus(status){
-        if (status === true){
-          return 'PUT'
-        } else {
-          return 'DELETE'
-        }
-    }
-
-    //Применение лайк-статуса к методу лайка карточки:
-    changeLikeCardStatus(cardId, likeStatus){
-      return fetch(`${this._url}/${this._cohort}/cards/likes/${cardId}`,
-        {
-          method: this.setCardLikeStatus(likeStatus),
-          headers:{
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          },
-        }
-      ).then(this.getRes);
-    };
-
+     //Промежуточный метод: установить лайк-статус
+      setCardLikeStatus(status){
+          if (status === true){
+            return 'PUT'
+          } else {
+            return 'DELETE'
+          }
+      }
+  
+      //Применение лайк-статуса к методу лайка карточки:
+      toggleLikeCard(cardId, likeStatus){
+        return fetch(`${this._url}/${this._cohort}/cards/likes/${cardId}`,
+          {
+            method: likeStatus ? "PUT" : "DELETE",
+            headers:{
+              authorization: this._token,
+              'Content-Type': 'application/json'
+            },
+          }
+        ).then(this.getRes);
+      };
+  
     //Удалить карточку
     deleteCard(cardId){
       return fetch(`${this._url}/${this._cohort}/cards/${cardId}`,

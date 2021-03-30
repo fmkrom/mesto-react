@@ -44,12 +44,12 @@ function App() {
   }
 
   function handleLikeCard(card){
-    const isLiked = card.likes.some((item)=> item._id === currentUser.id);
+    const isLiked = card.likes.some((item)=> item._id === currentUser._id);
     
-    api.changeLikeCardStatus(card.id, !isLiked)
+    api.toggleLikeCard(card.id, !isLiked)
     .then((newCardData)=>{
-      setCurrentCards(((cards)=> cards.map((c) => c._id === card.id ? newCardData : c)))
-    })
+      setCurrentCards(((state)=> state.map((c) => c._id === card.id ? newCardData : c)))
+    })  
   }
 
   function handleDeleteCard(data){
